@@ -200,6 +200,53 @@
             "zlib"
         ]
     },
+    "libSDL2": {
+        "source": "libSDL2",
+        "static-libs-unix": [
+            "libSDL2.a"
+        ],
+        "frameworks": [
+            "AudioToolbox",
+            "Carbon",
+            "Cocoa",
+            "CoreAudio",
+            "CoreVideo",
+            "IOKit",
+            "ForceFeedback",
+            "AVFoundation",
+            "Foundation",
+            "CoreHaptics",
+            "GameController"
+        ],
+        "weakFrameworks": [
+            "Metal",
+            "QuartzCore"
+        ]
+    },
+    "libSDL_image": {
+        "source": "libSDL_image",
+        "static-libs-unix": [
+            "libSDL2_image.a"
+        ],
+        "headers-unix": [
+            "SDL2/SDL_image.h"
+        ],
+        "lib-depends": [
+            "libSDL2"
+        ]
+    },
+    "libSDL_mixer": {
+        "source": "libSDL_mixer",
+        "static-libs-unix": [
+            "libSDL2_mixer.a"
+        ],
+        "headers-unix": [
+            "SDL2/SDL_mixer.h"
+        ],
+        "lib-depends": [
+            "libSDL2"
+        ]
+    },
     "libssh2": {
         "source": "libssh2",
         "static-libs-unix": [

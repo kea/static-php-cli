@@ -33,4 +33,9 @@ abstract class MacOSLibraryBase extends LibraryBase
     {
         return Config::getLib(static::NAME, 'frameworks', []);
     }
+
+    public function getWeakFrameworks(): array
+    {
+        return Config::getLib(static::NAME, 'weakFrameworks', []);
+    }
 }

@@ -90,10 +90,8 @@ class MacOSBuilder extends BuilderBase
 
     /**
      * 返回 macOS 系统依赖的框架列表
-     *
-     * @param bool $asString 是否以字符串形式返回（默认为 False）
      */
-    public function getFrameworks(bool $asString = false): array|string
+    public function getAllFrameworks(): string
     {
         $libs = [];
 
@@ -106,15 +104,15 @@ class MacOSBuilder extends BuilderBase
         }
 
         $frameworks = [];
+        $weakFrameworks = [];
         /** @var MacOSLibraryBase $lib */
         foreach ($libs as $lib) {
             array_push($frameworks, ...$lib->getFrameworks());
+            array_push($weakFrameworks, ...$lib->getWeakFrameworks());
         }
 
-        if ($asString) {
-            return implode(' ', array_map(fn ($x) => "-framework {$x}", $frameworks));
-        }
-        return $frameworks;
+        return implode(' ', array_map(fn ($x) => "-framework {$x}", $frameworks)) . ' ' .
+            implode(' ', array_map(fn ($x) => "-weak_framework {$x}", $weakFrameworks));
     }
 
     /**
@@ -123,7 +121,7 @@ class MacOSBuilder extends BuilderBase
      */
     public function buildPHP(int $build_target = BUILD_TARGET_NONE, bool $bloat = false): void
     {
-        $extra_libs = $this->getFrameworks(true) . ' ' . ($this->getExt('swoole') ? '-lc++ ' : '');
+        $extra_libs = $this->getAllFrameworks() . ' ' . ($this->getExt('swoole') ? '-lc++ ' : '');
         if (!$bloat) {
             $extra_libs .= implode(' ', $this->getAllStaticLibFiles());
         } else {

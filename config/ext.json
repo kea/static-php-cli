@@ -264,6 +264,36 @@
         "source": "redis",
         "arg-type": "custom"
     },
+    "sdl": {
+        "type": "external",
+        "source": "SDL",
+        "arg-type": "custom",
+        "lib-depends": [
+            "libSDL2"
+        ]
+    },
+    "sdl_image": {
+        "type": "external",
+        "source": "SDL_image",
+        "arg-type": "custom",
+        "lib-depends": [
+            "libSDL_image"
+        ],
+        "ext-depends": [
+            "sdl"
+        ]
+    },
+    "sdl_mixer": {
+        "type": "external",
+        "source": "SDL_mixer",
+        "arg-type": "custom",
+        "lib-depends": [
+            "libSDL_mixer"
+        ],
+        "ext-depends": [
+            "sdl"
+        ]
+    },
     "session": {
         "type": "builtin"
     },

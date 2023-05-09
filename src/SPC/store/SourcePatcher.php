@@ -68,7 +68,7 @@ class SourcePatcher
 
     public static function patchPHPConfigure(BuilderBase $builder): void
     {
-        $frameworks = $builder instanceof MacOSBuilder ? ' ' . $builder->getFrameworks(true) . ' ' : '';
+        $frameworks = $builder instanceof MacOSBuilder ? ' ' . $builder->getAllFrameworks() . ' ' : '';
         $patch = [];
         if ($curl = $builder->getExt('curl')) {
             $patch[] = ['curl check', '/-lcurl/', $curl->getLibFilesString() . $frameworks];
@@ -87,6 +87,9 @@ class SourcePatcher
         }
         if ($ssh2 = $builder->getExt('ssh2')) {
             $patch[] = ['ssh2 patch', '/-lssh2/', $ssh2->getLibFilesString()];
+        }
+        if ($sdlImage = $builder->getExt('sdl_image')) {
+            $patch[] = ['SDL2_image patch', '/-lSDL2_image/', $sdlImage->getLibFilesString()];
         }
         $patch[] = ['disable capstone', '/have_capstone="yes"/', 'have_capstone="no"'];
         foreach ($patch as $item) {

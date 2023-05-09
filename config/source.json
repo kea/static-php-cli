@@ -186,6 +186,33 @@
             "path": "COPYING"
         }
     },
+    "libSDL2": {
+        "type": "ghrel",
+        "repo": "libsdl-org/SDL",
+        "match": "SDL2.+\\.tar\\.gz",
+        "license": {
+            "type": "file",
+            "path": "LICENSE.txt"
+        }
+    },
+    "libSDL_image": {
+        "type": "ghrel",
+        "repo": "libsdl-org/SDL_image",
+        "match": "SDL2.+\\.tar\\.gz",
+        "license": {
+            "type": "file",
+            "path": "LICENSE.txt"
+        }
+    },
+    "libSDL_mixer": {
+        "type": "ghrel",
+        "repo": "libsdl-org/SDL_mixer",
+        "match": "SDL2.+\\.tar\\.gz",
+        "license": {
+            "type": "file",
+            "path": "LICENSE.txt"
+        }
+    },
     "libssh2": {
         "type": "ghrel",
         "repo": "libssh2/libssh2",
@@ -345,6 +372,35 @@
         "license": {
             "type": "file",
             "path": "COPYING"
+        }
+    },
+    "SDL": {
+        "type": "git",
+        "repo": "kea/php-sdl",
+        "path": "php-src/ext/SDL",
+        "rev": "check-sdl-pkg-config",
+        "url": "https://github.com/kea/php-sdl",
+        "license": {
+            "type": "file",
+            "path": "LICENSE"
+        }
+    },
+    "SDL_image": {
+        "type": "ghtagtar",
+        "repo": "kea/php-sdl-image",
+        "path": "php-src/ext/SDL_image",
+        "license": {
+            "type": "file",
+            "path": "LICENSE"
+        }
+    },
+    "SDL_mixer": {
+        "type": "ghtagtar",
+        "repo": "kea/php-sdl-mixer",
+        "path": "php-src/ext/SDL_mixer",
+        "license": {
+            "type": "file",
+            "path": "LICENSE"
         }
     },
     "sqlite": {
